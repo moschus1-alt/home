@@ -1,37 +1,35 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>듀오링고 스페인어 단어연습</title><style>
-:root{--g:#58cc02;--gd:#46a302;--blue:#1cb0f6;--ink:#3c3c3c;--muted:#777;--line:#e5e5e5;--bg:#fafafa}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}
-header{background:#fff;border-bottom:2px solid #eee;padding:15px 20px;position:sticky;top:0;z-index:10}.head{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
-h1{font-size:20px;margin:0}.pill{font-size:12px;background:#eefbe5;color:#3d8d00;padding:6px 9px;border-radius:99px}
-main{max-width:1050px;margin:auto;padding:20px;display:grid;grid-template-columns:390px 1fr;gap:20px}.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px}
-.tabs{display:flex;gap:7px;overflow:auto;margin:10px 0 14px}.tab{white-space:nowrap;border:2px solid #ddd;background:#fff;border-radius:12px;padding:8px 11px;font-weight:800;cursor:pointer}.tab.on{border-color:var(--g);color:var(--gd);background:#f4ffe9}
-.unit{border:2px solid #eee;border-radius:14px;padding:12px;margin:9px 0;display:flex;gap:10px;align-items:center;cursor:pointer}.unit.on{border-color:var(--g);background:#f7fff1}.unit input{width:20px;height:20px;accent-color:var(--g)}
-.unitname{font-weight:800}.small{font-size:12px;color:var(--muted)}button{border:0;border-radius:12px;padding:10px 13px;font-weight:800;cursor:pointer}.g{background:var(--g);color:#fff}.b{background:var(--blue);color:#fff}.x{background:#eee}.red{background:#ff4b4b;color:white}
-.actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.search{width:100%;border:2px solid #ddd;border-radius:12px;padding:10px;font:inherit}
-#units{max-height:52vh;overflow:auto}.word{font-size:42px;text-align:center;font-weight:900;margin:58px 0 15px}.meaning{text-align:center;font-size:25px;min-height:70px}.eng{text-align:center;color:#999;font-size:14px;margin-top:7px}.meta{text-align:center;color:#999;font-size:13px;margin-top:18px}
-.progress{height:13px;background:#eee;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--g)}.stat{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
-.center{justify-content:center}.notice{font-size:12px;line-height:1.5;background:#fff8df;padding:10px;border-radius:10px;margin-top:12px}
-@media(max-width:780px){main{grid-template-columns:1fr}.word{margin-top:35px}#units{max-height:36vh}}</style></head>
-<body><header><div class="head"><h1>🇪🇸 스페인어 단어연습</h1><span class="pill">Duolingo 공개 코스 데이터</span></div></header>
-<main><section class="card"><b>내 진도 선택</b><div class="tabs" id="tabs"></div><input class="search" id="search" placeholder="단어팩 검색">
-<div class="actions"><button class="g" id="all">현재 진도 모두 추가</button><button class="red" id="none">현재 진도 취소</button><button class="x" id="reset">전체 취소</button></div>
-<div id="summary" class="small"></div><div id="units"></div><div class="notice">※ 이 공개 자료의 Section/Skill은 현재 한국어→스페인어 991 Unit 코스 번호와 동일하지 않습니다. 공개 원본의 진도 구조를 그대로 사용합니다.</div></section>
+:root{--g:#58cc02;--b:#1cb0f6;--ink:#3c3c3c;--line:#e5e5e5;--bg:#fafafa}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:white;border-bottom:2px solid #eee;padding:15px;position:sticky;top:0;z-index:5}.wrap{max-width:1100px;margin:auto}h1{font-size:20px;margin:0}
+main{max-width:1100px;margin:auto;padding:18px;display:grid;grid-template-columns:420px 1fr;gap:18px}.card{background:white;border:2px solid var(--line);border-radius:18px;padding:16px}
+.section{border:2px solid #ddd;border-radius:14px;padding:12px;margin:9px 0;cursor:pointer}.section.on{border-color:var(--g);background:#f5ffed}.section b{font-size:16px}.muted{font-size:12px;color:#777}
+.unitbox{margin-top:14px;padding-top:14px;border-top:2px solid #eee}select{width:100%;padding:11px;border:2px solid #ddd;border-radius:12px;font:inherit;background:white}
+.topic{font-weight:800;margin:10px 0}.notice{font-size:12px;line-height:1.5;background:#fff7dc;padding:10px;border-radius:10px}
+button{border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}.g{background:var(--g);color:white}.b{background:var(--b);color:white}.x{background:#eee}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:13px 0}
+.word{font-size:43px;font-weight:900;text-align:center;margin:60px 0 15px}.meaning{text-align:center;font-size:25px;min-height:70px}.meta{text-align:center;color:#888;font-size:13px}.stat{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}.progress{height:13px;background:#eee;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--g)}
+@media(max-width:800px){main{grid-template-columns:1fr}.word{margin-top:35px}}</style></head>
+<body><header><div class="wrap"><h1>🇪🇸 한국어 → 스페인어 진도별 단어연습</h1></div></header><main>
+<section class="card"><b>듀오링고 현재 과정 기준 진도</b><div id="sections"></div><div class="unitbox"><label><b>현재 Unit</b></label><select id="unit"></select><div id="topic" class="topic"></div>
+<div class="actions"><button class="g" id="apply">이 Unit까지 단어팩 적용</button><button class="x" id="reset">전체 취소</button></div>
+<div id="mapped" class="muted"></div></div>
+<div class="notice">현재 한국어→스페인어 과정은 8개 Section, 총 991 Unit 구조입니다. 이 앱의 어휘 원본은 별도의 공개 English→Spanish Skill 데이터이므로, <b>Unit 이름과 진도 UI는 한국어 과정에 맞추되 단어팩은 진도 비율을 이용해 근사 대응</b>합니다. 정확한 Unit별 공식 단어 목록이라고 표시하지 않습니다.</div></section>
 <section class="card"><div class="stat"><span id="count"></span><span id="pos"></span></div><div class="progress"><div id="bar" class="bar"></div></div>
-<div id="word" class="word">단어팩을 선택하세요</div><div id="meaning" class="meaning"></div><div id="eng" class="eng"></div><div id="meta" class="meta"></div>
-<div class="actions center"><button class="x" id="prev">← 이전</button><button class="b" id="show">뜻 보기</button><button class="g" id="next">다음 →</button></div>
-<div class="actions center"><button class="x" id="shuffle">🔀 섞기</button><button class="x" id="speak">🔊 발음</button><button class="x" id="lang">한국어 뜻</button><button class="x" id="reviewToggle">검수 필요 제외: ON</button></div></section></main>
+<div id="word" class="word">진도를 선택하세요</div><div id="meaning" class="meaning"></div><div id="meta" class="meta"></div>
+<div class="actions" style="justify-content:center"><button class="x" id="prev">← 이전</button><button class="b" id="show">뜻 보기</button><button class="g" id="next">다음 →</button></div>
+<div class="actions" style="justify-content:center"><button class="x" id="shuffle">🔀 섞기</button><button class="x" id="speak">🔊 발음</button></div></section></main>
 <script>
-let excludeReview=true;let D,S=[],sel=new Set(JSON.parse(localStorage.getItem("duoSkillsV2")||"[]")),deck=[],i=0,show=false,section="all",koFirst=true;
+let D,C,sec=Number(localStorage.getItem("krEsSec")||1),unit=Number(localStorage.getItem("krEsUnit")||1),deck=[],i=0,reveal=false;
 const $=x=>document.getElementById(x);
-fetch("duolingo_spanish_public_master_ko_v5.json").then(r=>r.json()).then(d=>{D=d;build();render()});
-function build(){let m=new Map;D.words.forEach(w=>(w.skills||[]).forEach((n,j)=>{let id=(w.skill_ids||[])[j]||n;if(!m.has(id))m.set(id,{id,n,s:w.first_section||0,c:0});m.get(id).c++}));S=[...m.values()].sort((a,b)=>a.s-b.s||a.n.localeCompare(b.n));let secs=[...new Set(S.map(x=>x.s))];$("tabs").innerHTML='<button class="tab on" data-s="all">전체</button>'+secs.map(s=>`<button class="tab" data-s="${s}">Section ${s}</button>`).join("");$("tabs").onclick=e=>{if(e.target.dataset.s){section=e.target.dataset.s;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.s==section));packs()}}}
-function visible(){let q=$("search").value.toLowerCase();return S.filter(x=>(section=="all"||String(x.s)==section)&&x.n.toLowerCase().includes(q))}
-function packs(){let v=visible();$("units").innerHTML=v.map(x=>`<label class="unit ${sel.has(x.id)?"on":""}"><input type="checkbox" data-id="${x.id}" ${sel.has(x.id)?"checked":""}><span><div class="unitname">${esc(x.n)}</div><div class="small">Section ${x.s} · ${x.c}개 연결 어휘</div></span></label>`).join("");$("summary").textContent=`표시 ${v.length}개 · 선택 ${sel.size}개 단어팩`;document.querySelectorAll("#units input").forEach(x=>x.onchange=()=>{x.checked?sel.add(x.dataset.id):sel.delete(x.dataset.id);save();redeck()})}
-function redeck(){let seen=new Set;deck=D.words.filter(w=>!(excludeReview&&(w.meanings_ko||[]).some(x=>x.startsWith('[검수 필요]')))&&(w.skill_ids||[]).some(id=>sel.has(id))&&!seen.has(w.term)&&seen.add(w.term));i=Math.min(i,Math.max(0,deck.length-1));show=false;card()}
-function card(){ $("count").textContent=`학습 어휘 ${deck.length.toLocaleString()}개`;if(!deck.length){$("word").textContent="단어팩을 선택하세요";$("meaning").textContent=$("eng").textContent=$("meta").textContent="";$("pos").textContent="0 / 0";$("bar").style.width="0";return}let w=deck[i],k=w.meanings_ko||[],e=w.meanings_en||[];$("word").textContent=w.term;$("meaning").textContent=show?(koFirst?(k.length?k.join(" · "):e.join(" · ")):e.join(" · ")):"";$("eng").textContent=show&&koFirst&&k.length?`영어: ${e.join(" · ")}`:"";$("meta").textContent=`Section ${w.first_section} · ${w.first_skill}`;$("pos").textContent=`${i+1} / ${deck.length}`;$("bar").style.width=(i+1)/deck.length*100+"%"}
-function save(){localStorage.setItem("duoSkillsV2",JSON.stringify([...sel]));packs()}function render(){packs();redeck()}function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-$("search").oninput=packs;$("all").onclick=()=>{visible().forEach(x=>sel.add(x.id));save();redeck()};$("none").onclick=()=>{visible().forEach(x=>sel.delete(x.id));save();redeck()};$("reset").onclick=()=>{sel.clear();save();redeck()};
-$("show").onclick=()=>{show=true;card()};$("next").onclick=()=>{if(deck.length){i=(i+1)%deck.length;show=false;card()}};$("prev").onclick=()=>{if(deck.length){i=(i-1+deck.length)%deck.length;show=false;card()}};
-$("shuffle").onclick=()=>{deck.sort(()=>Math.random()-.5);i=0;show=false;card()};$("speak").onclick=()=>{if(deck.length){let u=new SpeechSynthesisUtterance(deck[i].term);u.lang="es-ES";speechSynthesis.cancel();speechSynthesis.speak(u)}};$("lang").onclick=()=>{koFirst=!koFirst;$("lang").textContent=koFirst?"한국어 우선":"영어 뜻";card()}
-$("reviewToggle").onclick=()=>{excludeReview=!excludeReview;$("reviewToggle").textContent="검수 필요 제외: "+(excludeReview?"ON":"OFF");redeck()};</script></body></html>
+Promise.all([fetch("duolingo_spanish_public_master_ko_v5.json").then(r=>r.json()),fetch("korean_spanish_course_map.json").then(r=>r.json())]).then(([d,c])=>{D=d;C=c;renderSections();renderUnits();apply()});
+function renderSections(){$("sections").innerHTML=C.sections.map(s=>`<div class="section ${s.section==sec?"on":""}" data-s="${s.section}"><b>Section ${s.section} · ${s.cefr}</b><div>${s.title}</div><div class="muted">${s.units} Units · ${s.desc}</div></div>`).join("");document.querySelectorAll(".section").forEach(x=>x.onclick=()=>{sec=Number(x.dataset.s);unit=1;renderSections();renderUnits()})}
+function renderUnits(){let s=C.sections.find(x=>x.section==sec);$("unit").innerHTML=Array.from({length:s.units},(_,k)=>`<option value="${k+1}" ${k+1==unit?"selected":""}>Unit ${k+1}</option>`).join("");topic();$("unit").onchange=()=>{unit=Number($("unit").value);topic()}}
+function topic(){let t=(C.verified_unit_titles[String(sec)]||[])[unit-1];$("topic").textContent=t?`Unit ${unit} · ${t}`:`Unit ${unit} · 현재 과정 진도`;}
+function cumulativeUnit(){let n=0;for(let s of C.sections){if(s.section<sec)n+=s.units;else if(s.section==sec){n+=unit;break}}return n}
+function apply(){localStorage.setItem("krEsSec",sec);localStorage.setItem("krEsUnit",unit);let p=cumulativeUnit()/C.total_units;
+let words=[...D.words].sort((a,b)=>(a.first_section-b.first_section)||String(a.first_skill_id).localeCompare(String(b.first_skill_id)));
+let n=Math.max(1,Math.round(words.length*p));deck=words.slice(0,n).filter(w=>!(w.meanings_ko||[]).some(x=>x.startsWith("[검수 필요]")));i=0;reveal=false;
+$("mapped").textContent=`전체 과정의 약 ${(p*100).toFixed(1)}% 지점 · 현재 한국어 뜻 학습 가능 어휘 ${deck.length.toLocaleString()}개를 누적 적용`;card()}
+function card(){if(!deck.length){$("word").textContent="학습 가능한 단어가 없습니다";return}let w=deck[i];$("count").textContent=`${deck.length.toLocaleString()}개`;$("pos").textContent=`${i+1} / ${deck.length}`;$("bar").style.width=(i+1)/deck.length*100+"%";$("word").textContent=w.term;$("meaning").textContent=reveal?(w.meanings_ko||[]).join(" · "):"";$("meta").textContent=reveal?`공개 어휘 Skill: ${w.first_skill}`:""}
+$("apply").onclick=apply;$("reset").onclick=()=>{sec=1;unit=1;renderSections();renderUnits();deck=[];card()};$("show").onclick=()=>{reveal=true;card()};$("next").onclick=()=>{if(deck.length){i=(i+1)%deck.length;reveal=false;card()}};$("prev").onclick=()=>{if(deck.length){i=(i-1+deck.length)%deck.length;reveal=false;card()}};$("shuffle").onclick=()=>{deck.sort(()=>Math.random()-.5);i=0;reveal=false;card()};$("speak").onclick=()=>{if(deck.length){let u=new SpeechSynthesisUtterance(deck[i].term);u.lang="es-ES";speechSynthesis.cancel();speechSynthesis.speak(u)}};
+</script></body></html>
